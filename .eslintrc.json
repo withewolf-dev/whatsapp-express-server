@@ -1,0 +1,12 @@
+{
+  "env": {
+    "node": true,
+    "commonjs": true,
+    "es2021": true
+  },
+  "extends": ["eslint:node", "prettier"],
+  "parserOptions": {
+    "ecmaVersion": "latest"
+  },
+  "rules": {}
+}
