@@ -1,9 +1,6 @@
 const asyncHandler = require('express-async-handler')
-// const generateToken = require('../config/generateToken')
 const User = require('../models/userModel')
 const jwt = require('jsonwebtoken')
-const bcrypt = require('bcryptjs')
-const cookie = require('cookie')
 
 const allUsers = asyncHandler(async (req, res) => {
   const keyword = req.query.search
@@ -63,7 +60,7 @@ const authUser = asyncHandler(async (req, res) => {
   const token = jwt.sign({ _id: user._id }, process.env.JWT_SECRET)
 
   res.cookie('jwt', token, {
-    httpOnly: true,
+    httpOnly: false,
     maxAge: 24 * 60 * 60 * 1000,
     path: '/'
   })
@@ -109,14 +106,6 @@ const me = asyncHandler(async (req, res) => {
 })
 
 const logout = asyncHandler((req, res) => {
-  const token = req.cookies[`jwt`]
-
-  // res.cookie('jwt', token, {
-  //   httpOnly: true,
-  //   maxAge: 24 * 60 * 60 * 1000,
-  //   path: '/'
-  // })
-
   res.clearCookie('jwt', { path: '/' })
 
   res.send({
