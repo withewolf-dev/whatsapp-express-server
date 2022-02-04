@@ -85,7 +85,6 @@ const authUser = asyncHandler(async (req, res) => {
 })
 
 const me = asyncHandler(async (req, res) => {
-  console.log(req.cookies)
   try {
     const cookie = req.cookies['jwt']
 
