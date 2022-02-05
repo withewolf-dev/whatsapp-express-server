@@ -25,6 +25,8 @@ app.use(
 
 app.use(express.json())
 
+app.set('trust proxy', 1)
+
 app.get('/', (req, res) => {
   res.send('Hello World!2')
 })
