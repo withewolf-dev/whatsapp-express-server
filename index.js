@@ -21,7 +21,7 @@ app.use(cors({ credentials: true, origin: ['http://localhost:3000'] }))
 app.use(express.json())
 
 app.get('/', (req, res) => {
-  res.send('Hello World!')
+  res.send('Hello World!2')
 })
 app.use('/api/user', userRoutes)
 app.use('/api/chat', chatRoutes)
