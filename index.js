@@ -7,6 +7,7 @@ const messageRoutes = require('./routes/messageRoutes')
 const testRoutes = require('./routes/testRoutes')
 const cookieParser = require('cookie-parser')
 const cors = require('cors')
+const cookieSession = require('cookie-session')
 
 const { notFound, errorHandler } = require('./middleware/errorMiddileware')
 
@@ -25,11 +26,16 @@ app.use(
 
 app.use(express.json())
 
-app.enable('trust proxy', 1)
-
 app.get('/', (req, res) => {
   res.send('Hello World!2')
 })
+
+app.use(
+  cookieSession({
+    secret: process.env.JWT_SECRET,
+    secureProxy: true
+  })
+)
 app.use('/api/user', userRoutes)
 app.use('/api/chat', chatRoutes)
 app.use('/api/message', messageRoutes)
