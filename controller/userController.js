@@ -65,7 +65,6 @@ const authUser = asyncHandler(async (req, res) => {
     path: '/'
   })
 
-  // res.setHeader('Set-Cookie', cookie.serialize('auth', token))
   if (user && (await user.matchPassword(password))) {
     res.json({
       _id: user._id,
