@@ -63,7 +63,7 @@ const authUser = asyncHandler(async (req, res) => {
     httpOnly: false,
     maxAge: 24 * 60 * 60 * 1000,
     path: '/',
-    domain: 'https://whatsappchat-server.herokuapp.com'
+    domain: 'https://client-test-coral.vercel.app'
   })
 
   if (user && (await user.matchPassword(password))) {
