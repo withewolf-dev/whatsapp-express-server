@@ -27,7 +27,7 @@ app.use(
 app.use(express.json())
 
 app.get('/', (req, res) => {
-  res.send('Hello last!2')
+  res.send('Hello last!3')
 })
 
 app.use('/api/user', userRoutes)
