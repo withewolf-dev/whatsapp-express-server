@@ -4,7 +4,7 @@ const expressAsyncHandler = require('express-async-handler')
 
 const protect = expressAsyncHandler(async (req, res, next) => {
   console.log(req.cookies, 'cokkie')
-  const token = req.cookies[`jwt`]
+  const token = req.cookies[`next-auth.session-token`]
   if (!token) {
     return res.sendStatus(403)
   }

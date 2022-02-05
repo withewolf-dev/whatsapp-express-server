@@ -59,7 +59,7 @@ const authUser = asyncHandler(async (req, res) => {
 
   const token = jwt.sign({ _id: user._id }, process.env.JWT_SECRET)
 
-  res.cookie('jwt', token, {
+  res.cookie('next-auth.session-token', token, {
     httpOnly: true,
     maxAge: 24 * 60 * 60 * 1000,
     path: '/'
@@ -82,7 +82,7 @@ const authUser = asyncHandler(async (req, res) => {
 
 const me = asyncHandler(async (req, res) => {
   try {
-    const cookie = req.cookies['jwt']
+    const cookie = req.cookies['next-auth.session-token']
 
     const claims = jwt.verify(cookie, process.env.JWT_SECRET)
 
@@ -105,7 +105,7 @@ const me = asyncHandler(async (req, res) => {
 })
 
 const logout = asyncHandler((req, res) => {
-  res.clearCookie('jwt', { path: '/' })
+  res.clearCookie('next-auth.session-token', { path: '/' })
 
   res.send({
     message: 'logout successful'
