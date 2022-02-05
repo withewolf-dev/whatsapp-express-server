@@ -27,15 +27,9 @@ app.use(
 app.use(express.json())
 
 app.get('/', (req, res) => {
-  res.send('Hello World!2')
+  res.send('Hello last!2')
 })
 
-app.use(
-  cookieSession({
-    secret: process.env.JWT_SECRET,
-    secureProxy: true
-  })
-)
 app.use('/api/user', userRoutes)
 app.use('/api/chat', chatRoutes)
 app.use('/api/message', messageRoutes)

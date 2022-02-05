@@ -62,7 +62,8 @@ const authUser = asyncHandler(async (req, res) => {
   res.cookie('jwt', token, {
     httpOnly: false,
     maxAge: 24 * 60 * 60 * 1000,
-    path: '/'
+    path: '/',
+    domain: 'https://whatsappchat-server.herokuapp.com'
   })
 
   if (user && (await user.matchPassword(password))) {
