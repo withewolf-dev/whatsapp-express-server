@@ -16,7 +16,12 @@ const app = express()
 
 app.use(cookieParser())
 
-app.use(cors({ credentials: true, origin: ['http://localhost:3000'] }))
+app.use(
+  cors({
+    credentials: true,
+    origin: ['http://localhost:3000', 'https://client-test-coral.vercel.app']
+  })
+)
 
 app.use(express.json())
 
@@ -40,7 +45,7 @@ const server = app.listen(
 const io = require('socket.io')(server, {
   pingTimeout: 60000,
   cors: {
-    origin: 'http://localhost:3000',
+    origin: ['http://localhost:3000', 'https://client-test-coral.vercel.app'],
     credentials: true
   }
 })
