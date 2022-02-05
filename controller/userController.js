@@ -60,7 +60,7 @@ const authUser = asyncHandler(async (req, res) => {
   const token = jwt.sign({ _id: user._id }, process.env.JWT_SECRET)
 
   res.cookie('jwt', token, {
-    httpOnly: true,
+    httpOnly: false,
     maxAge: 24 * 60 * 60 * 1000,
     path: '/'
   })
