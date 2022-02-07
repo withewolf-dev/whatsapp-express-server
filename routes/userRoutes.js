@@ -11,8 +11,8 @@ const router = express.Router()
 
 router.route('/').post(registerUser)
 router.post('/login', authUser)
-router.get('/logout', logout)
+// router.get('/logout', logout)
 router.get('/', protect, allUsers)
-router.get('/me', me)
+// router.get('/me', me)
 
 module.exports = router
